@@ -1,0 +1,82 @@
+{
+	"clearInfo": {
+		"clearUrl": "api/clear.json"
+	},
+	"homeInfo": {
+		"title": "首页",
+		"icon": "fa fa-home",
+		"href": "Proxy/Welcome"
+	},
+	"logoInfo": {
+		"title": "穿山甲云科技",
+		"image": "Public/image/logo.png",
+		"href": ""
+	},
+	"clearInfo": {
+    "clearUrl": "Public/api/clear.json"
+    },
+	"menuInfo": {
+		"currency": {
+			"title": "云网络科技",
+			"icon": "fa fa-paper-plane",
+			"child": [{
+					"title": "代理信息",
+					"href": "Proxy/Welcome",
+					"icon": "fa fa-tachometer",
+					"target": "_self"
+				},
+				{
+					"title": "卡密管理",
+					"href": "",
+					"icon": "fa fa-window-maximize",
+					"target": "_self",
+					"child": [
+						{
+							"title": "生成注册码",
+							"href": "Proxy/Createcode",
+							"icon": "fa fa-list-alt",
+							"target": "_self"
+						},
+						{
+							"title": "注册码管理",
+							"href": "Proxy/Managecode",
+							"icon": "fa fa-navicon",
+							"target": "_self"
+						}
+					]
+				},
+				{
+					"title": "代理系统",
+					"href": "",
+					"icon": "fa fa-paper-plane",
+					"target": "_self",
+					"child": [{
+							"title": "代理列表",
+							"href": "Proxy/Proxy",
+							"icon": "fa fa-group",
+							"target": "_self"
+						},
+						{
+							"title": "购卡记录",
+							"href": "Proxy/BuyProxy",
+							"icon": "fa fa-credit-card",
+							"target": "_self"
+						}
+					]
+				},
+				{
+					"title": "意见反馈",
+					"href": "",
+					"icon": "fa fa-flag-o",
+					"target": "_self",
+					"child": [{
+						"title": "联系我们",
+						"href": "Proxy/Contact",
+						"icon": "fa fa-comments",
+						"target": "_self"
+					}]
+				}
+			]
+		}
+	}
+}

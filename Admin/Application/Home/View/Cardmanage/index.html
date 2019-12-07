@@ -1,0 +1,215 @@
+<div class="layuimini-container">
+    <div class="layuimini-main">
+
+        <fieldset class="layui-elem-field layuimini-search">
+            <legend>搜索信息</legend>
+            <div style="margin: 10px 10px 10px 10px">
+                <form class="layui-form layui-form-pane" action="">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">充值卡</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="card" lay-verify="required" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">搜索</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </fieldset>
+		<div class="layui-btn-group">
+            <button class="layui-btn data-export">导出</button>
+        </div>
+        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+		<script type="text/html" id="switchTpl">
+        <input type="checkbox" name="state" value="{{d.id}}" lay-skin="switch" lay-text="未使用|已使用" lay-filter="state" {{ d.id == 0 ? 'checked' : '' }}>
+        </script>
+        <script type="text/html" id="currentTableBar">
+            <a class="layui-btn layui-btn-xs data-count-edit" lay-event="edit">编辑</a>
+            <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
+        </script>
+    </div>
+</div>
+<!--充值卡信息-->
+<script class="EditCardInfo" type="text/html">
+          <form class="layui-form layui-form-pane" action="" lay-filter="CardInfo">
+				         <div class="layui-form-item">
+                              <label class="layui-form-label">充值卡</label>
+                              <div class="layui-input-inline">
+                                   <input disabled="disabled" type="text" name="card" lay-verify="required" autocomplete="off"  class="layui-input">
+                              </div>
+                         </div>
+						 <div class="layui-form-item">
+                              <label class="layui-form-label">时长</label>
+                              <div class="layui-input-inline">
+                                   <input disabled="disabled" type="text" name="time_str" lay-verify="required"  autocomplete="off"  class="layui-input">
+                              </div>
+                         </div>
+						 <div class="layui-form-item">
+                              <label class="layui-form-label">创建时间</label>
+                              <div class="layui-input-inline">
+                                   <input disabled="disabled" type="text" name="produce_time" lay-verify="required" autocomplete="off"  class="layui-input">
+                              </div>
+                         </div>
+						 <div class="layui-form-item" pane="">
+                         <label class="layui-form-label">状态</label>
+                                <div class="layui-input-block">
+                                     <input type="checkbox" name="state" lay-skin="switch" lay-filter="switch" lay-text="未使用|已使用" value="1">
+                                </div>
+                         </div>
+						 <div class="layui-form-item">
+                              <button class="layui-hide"  lay-submit="" lay-filter="submit"></button>
+                         </div>
+				   </form>
+</script>
+<script>
+    layui.use(['form', 'table'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            table = layui.table;
+
+        var ins1 = table.render({
+            elem: '#currentTableId',
+            url: './Home/Cardmanage/CardList',
+			height: 500,
+			loading: true,
+			method: 'post',
+			title: '充值卡',
+			limits: [10],
+            limit: 10,
+            page: true,
+			cellMinWidth: 80,
+            cols: [[
+                {field: 'id', width: 60,  title: 'ID', sort: true},
+                {field: 'card', title: '充值卡'},
+                {field: 'time_str',  title: '时长'},
+                {field: 'produce_time',  title: '创建时间'},
+                {field: 'state',  title: '状态' ,templet:function(rec){
+							if(rec.state=='0'){
+	        					return "已使用";
+	        				}else if(rec.state=='1'){
+	        					return "未使用";
+	        				}else{
+	        					return rec.state;
+	        				}
+        		}},
+                {title: '操作', minWidth: 120,  templet: '#currentTableBar', fixed: "right", align: "center"}
+            ]],
+			done: function (res, curr, count) {
+                exportData=res.data;
+            }
+        });
+		$(".data-export").on("click", function () {
+            table.exportFile(ins1.config.id,exportData, 'csv');
+        });
+        form.on('submit(data-search-btn)', function (data) {
+            var result = JSON.stringify(data.field);
+            table.reload('currentTableId', {
+                page: {
+                    curr: 1
+                }
+                , where: {
+                    searchParams: result
+                }
+            }, 'data');
+
+            return false;
+        });
+		form.on('switch', function(data) {
+            $(data.elem).attr('type', 'hidden').val(this.checked ? 1 : 0);
+        });
+		form.on('submit(submit)', function (data) {
+		    var loading = layer.load(0, {
+                        shade: false
+                    });
+			$.ajax({
+                      url:"./Home/Cardmanage/State",
+                      method:'post',
+                      data:data.field,
+				      xhrFields: {
+                      withCredentials: true
+                      },
+                      crossDomain: true,
+                      dataType:'JSON',
+                      success:function(res){
+				        var result = JSON.parse(res);
+                        if(result.status==0){
+                          layer.msg(result.msg,{
+                            time:1000,
+                            end:function () {
+                            window.location.reload();
+                            }
+                          });
+                          }
+                        else
+                          layer.msg(result.msg);
+						
+						layer.close(loading);
+                    },
+                    error:function (e) {
+                       layer.msg("提交错误");
+					   layer.close(loading);
+                    }
+                  })
+            return false;
+        });
+        table.on('tool(currentTableFilter)', function (obj) {
+            var data = obj.data;
+            if (obj.event === 'edit') {
+				layer.open({
+                     content: $('.EditCardInfo').html()
+					 ,title: '编辑 '+data.card
+                     ,btn: ['提交修改', '取消']
+					 ,success: function(layero, index){
+                               form.render();
+							   form.val('CardInfo', {
+                                        "card": data.card,
+										"time_str": data.time_str,
+										"produce_time": data.produce_time,
+                                        "state": parseInt(data.state) ? true : false    										
+                               })
+                     }
+                     ,yes: function(res,layero){
+					       layero.find('form').find('button[lay-submit]').click();
+						   return false;
+                     }
+               });
+            } else if (obj.event === 'delete') {
+                layer.confirm('是否删除 '+data.card+' 充值卡', function (index) {
+                    obj.del();
+                    layer.close(index);
+					var loading = layer.load(0, {
+                        shade: false
+                    });
+					$.ajax({
+                      url:"./Home/Cardmanage/CardDel",
+                      method:'post',
+                      data:data,
+				      xhrFields: {
+                      withCredentials: true
+                      },
+                      crossDomain: true,
+                      dataType:'JSON',
+                      success:function(res){
+				        var result = JSON.parse(res);
+                        if(result.status==0){
+                           layer.msg(result.msg);
+                          }
+                        else
+                          layer.msg(result.msg);
+						  
+						layer.close(loading);
+                    },
+                    error:function (e) {
+                       layer.msg("提交错误");
+					   layer.close(loading);
+                    }
+                  })
+                });
+            }
+        });
+
+    });
+</script>

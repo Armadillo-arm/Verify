@@ -1,0 +1,91 @@
+<div class="layuimini-container">
+    <div class="layuimini-main">
+		<table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+        <script type="text/html" id="currentTableBar">
+            <a class="layui-btn layui-btn-xs data-count-edit" lay-event="edit">查看</a>
+            <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
+        </script>
+    </div>
+</div>
+<script>
+    layui.use(['form', 'table'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            table = layui.table;
+		form.render();
+        table.render({
+            elem: '#currentTableId',
+            url: './Home/Feedback/FeedbackList',
+			height: 500,
+			loading: true,
+			method: 'post',
+			limits: [10],
+            limit: 10,
+			cellMinWidth: 80,
+            page: true,
+            cols: [[
+                {field: 'id',width: 60, title: 'ID', sort: true},
+                {field: 'username', title: '用户'},
+				{field: 'submit_time', title: '时间'},
+				{field: 'submit_ip', title: 'IP'},
+				{field: 'content', title: '反馈内容'},
+                {title: '操作', minWidth: 120, templet: '#currentTableBar', fixed: "right", align: "center"}
+            ]]
+        });
+        table.on('tool(currentTableFilter)', function (obj) {
+            var data = obj.data;
+            if (obj.event === 'edit') {
+				var title = $(this).children('.layuimini-notice-title').text(),
+                noticeTime = $(this).children('.layuimini-notice-extra').text(),
+                content = $(this).children('.layuimini-notice-content').html();
+            var html = '<div style="padding:15px 20px; text-align:justify; line-height: 22px;border-bottom:1px solid #e2e2e2;background-color: #2f4056;color: #ffffff">\n' +
+                '<div style="text-align: center;margin-bottom: 20px;font-weight: bold;border-bottom:1px solid #718fb5;padding-bottom: 5px"><h4 class="text-danger">' + data.username + '</h4></div>\n' +
+                '<div style="font-size: 12px">' + data.content.replace(/[\n]/g,'<br/>') + '</div>\n' +
+                '</div>\n';
+            parent.layer.open({
+                type: 1,
+                title: '反馈内容' + '<span style="float: right;right: 1px;font-size: 12px;color: #b1b3b9;margin-top: 1px">' + data.submit_time + '</span>',
+                area: '300px;',
+                shade: 0.8,
+                id: 'layuimini-notice',
+                btn: ['取消'],
+                btnAlign: 'c',
+                moveType: 1,
+                content: html
+            });
+            } else if (obj.event === 'delete') {
+                layer.confirm('是否删除 '+data.username+' 这条记录', function (index) {
+                    obj.del();
+                    layer.close(index);
+					var loading = layer.load(0, {
+                        shade: false
+                    });
+					$.ajax({
+                      url:"./Home/Feedback/FeedbackDel",
+                      method:'post',
+                      data:data,
+				      xhrFields: {
+                      withCredentials: true
+                      },
+                      crossDomain: true,
+                      dataType:'JSON',
+                      success:function(res){
+				        var result = JSON.parse(res);
+                        if(result.status==0){
+                           layer.msg(result.msg);
+                          }
+                        else
+                          layer.msg(result.msg);
+						layer.close(loading);
+                    },
+                    error:function (e) {
+                       layer.msg("提交错误");
+					   layer.close(loading);
+                    }
+                  })
+                });
+            }
+        });
+
+    });
+</script>

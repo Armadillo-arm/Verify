@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29123.88
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AX-Inject", "AX-Inject\AX-Inject.csproj", "{79CD4C39-6E9E-448E-8D89-C873C6B7B3A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DexLib", "DexLib\DexLib.csproj", "{0819DAC9-0A34-4A22-8125-BCBEC76D5BD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardView", "CardView\CardView.csproj", "{940A5371-ADC7-44DB-8B52-0009A7DEA368}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{79CD4C39-6E9E-448E-8D89-C873C6B7B3A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79CD4C39-6E9E-448E-8D89-C873C6B7B3A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79CD4C39-6E9E-448E-8D89-C873C6B7B3A2}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{79CD4C39-6E9E-448E-8D89-C873C6B7B3A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79CD4C39-6E9E-448E-8D89-C873C6B7B3A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79CD4C39-6E9E-448E-8D89-C873C6B7B3A2}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{0819DAC9-0A34-4A22-8125-BCBEC76D5BD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0819DAC9-0A34-4A22-8125-BCBEC76D5BD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0819DAC9-0A34-4A22-8125-BCBEC76D5BD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0819DAC9-0A34-4A22-8125-BCBEC76D5BD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{940A5371-ADC7-44DB-8B52-0009A7DEA368}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{940A5371-ADC7-44DB-8B52-0009A7DEA368}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{940A5371-ADC7-44DB-8B52-0009A7DEA368}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{940A5371-ADC7-44DB-8B52-0009A7DEA368}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C57E2C80-910D-4C04-A0E3-0FE762CFD78A}
+	EndGlobalSection
+EndGlobal

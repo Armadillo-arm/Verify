@@ -1,0 +1,196 @@
+{
+	"clearInfo": {
+		"clearUrl": "api/clear.json"
+	},
+	"homeInfo": {
+		"title": "首页",
+		"icon": "fa fa-home",
+		"href": "Home/Welcome"
+	},
+	"logoInfo": {
+		"title": "穿山甲云科技",
+		"image": "Public/image/logo.png",
+		"href": ""
+	},
+	"clearInfo": {
+    "clearUrl": "Public/api/clear.json"
+    },
+	"menuInfo": {
+		"currency": {
+			"title": "云网络科技",
+			"icon": "fa fa-paper-plane",
+			"child": [{
+					"title": "商户信息",
+					"href": "Home/Welcome",
+					"icon": "fa fa-tachometer",
+					"target": "_self"
+				},
+				{
+					"title": "应用管理",
+					"href": "",
+					"icon": "fa fa-window-maximize",
+					"target": "_self",
+					"child": [{
+							"title": "新建软件",
+							"href": "Home/Changesoft",
+							"icon": "fa fa-cloud",
+							"target": "_self"
+						},
+						{
+							"title": "软件管理",
+							"href": "Home/Managesoft",
+							"icon": "fa fa-cubes",
+							"target": "_self"
+						},
+						{
+							"title": "生成注册码",
+							"href": "Home/createcode",
+							"icon": "fa fa-list-alt",
+							"target": "_self"
+						},
+						{
+							"title": "注册码管理",
+							"href": "Home/Managecode",
+							"icon": "fa fa-navicon",
+							"target": "_self"
+						}
+					]
+				},
+				{
+					"title": "代理系统",
+					"href": "",
+					"icon": "fa fa-paper-plane",
+					"target": "_self",
+					"child": [{
+							"title": "代理列表",
+							"href": "Home/Proxy",
+							"icon": "fa fa-group",
+							"target": "_self"
+						},
+						{
+							"title": "价格管理",
+							"href": "Home/Price",
+							"icon": "fa fa-forumbee",
+							"target": "_self"
+						},
+						{
+							"title": "购卡记录",
+							"href": "Home/BuyProxy",
+							"icon": "fa fa-credit-card",
+							"target": "_self"
+						}
+					]
+				},
+				{
+					"title": "商户系统",
+					"href": "",
+					"icon": "fa fa-bug",
+					"target": "_self",
+					"child": [{
+							"title": "用户管理",
+							"href": "Home/Admin",
+							"icon": "fa fa-group",
+							"target": "_self"
+						},
+						{
+							"title": "充值卡生成",
+							"href": "Home/Createcard",
+							"icon": "fa fa-credit-card",
+							"target": "_self"
+						},
+						{
+							"title": "充值卡管理",
+							"href": "Home/Cardmanage",
+							"icon": "fa fa-newspaper-o",
+							"target": "_self"
+						}
+					]
+				},
+				{
+					"title": "系统设置",
+					"href": "",
+					"icon": "fa fa-cogs",
+					"target": "_self",
+					"child": [{
+							"title": "配置设置",
+							"href": "Home/Setting",
+							"icon": "fa fa-cog",
+							"target": "_self"
+						},
+						{
+							"title": "版本管理",
+							"href": "Home/Version",
+							"icon": "fa fa-sitemap",
+							"target": "_self"
+						},
+						{
+							"title": "系统公告",
+							"href": "Home/Gg",
+							"icon": "fa fa-comments",
+							"target": "_self"
+						},
+						{
+							"title": "广告管理",
+							"href": "Home/Ads",
+							"icon": "fa fa-puzzle-piece",
+							"target": "_self"
+						},
+						{
+							"title": "模块管理",
+							"href": "Home/Model",
+							"icon": "fa fa-codepen",
+							"target": "_self"
+						},
+						{
+							"title": "签名管理",
+							"href": "Home/Sign",
+							"icon": "fa fa-leaf",
+							"target": "_self"
+						},
+						{
+							"title": "反馈管理",
+							"href": "Home/Feedback",
+							"icon": "fa fa-pie-chart",
+							"target": "_self"
+						}
+					]
+				},
+				{
+					"title": "高防DDOS服务",
+					"href": "Home/Advanced",
+					"icon": "fa fa-apple",
+					"target": "_self"
+				},
+				{
+					"title": "意见反馈",
+					"href": "",
+					"icon": "fa fa-flag-o",
+					"target": "_self",
+					"child": [{
+						"title": "联系我们",
+						"href": "Home/Contact",
+						"icon": "fa fa-comments",
+						"target": "_self"
+					}]
+				}
+			]
+		},
+		"component": {
+			"title": "云APP商店",
+			"icon": "fa fa-dropbox",
+			"child": [{
+					"title": "应用列表",
+					"href": "Home/CloudSoft",
+					"icon": "fa fa-cloud",
+					"target": "_self"
+				},
+				{
+					"title": "文件上传",
+					"href": "Home/CloudUpload",
+					"icon": "fa fa-cloud-upload",
+					"target": "_self"
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,58 @@
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <android.support.v7.widget_PanGolin.CardView
+        android:tag="cardview"
+        android:layout_marginTop="-25dp"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:layout_height="wrap_content">
+        <AX_Inject.AuthDialog.view.MultiWaveHeader
+            android:layout_width="match_parent"
+            android:layout_height="100dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:padding="5dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:text="分类"
+                style="@android:style/TextAppearance.Material.Title"
+                android:layout_height="wrap_content"/>
+            <Spinner
+                android:layout_width="match_parent"
+                android:tag="goods"
+                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:text="商品"
+                style="@android:style/TextAppearance.Material.Title"
+                android:layout_height="wrap_content"/>
+            <Spinner
+                android:layout_width="match_parent"
+                android:tag="products"
+                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:text="立即支付"
+                android:background="@android:color/transparent"
+                android:layout_marginTop="5dp"
+                android:tag="Pay"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+    </android.support.v7.widget_PanGolin.CardView>
+</RelativeLayout>

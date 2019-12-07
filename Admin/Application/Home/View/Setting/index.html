@@ -1,0 +1,147 @@
+<style>
+    .layui-form-item .layui-input-company {width: auto;padding-right: 10px;line-height: 38px;}
+</style>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <div class="layui-form layuimini-form">
+		 <form class="layui-form layui-form-pane" lay-filter="SettingInfo">
+            <div class="layui-form-item">
+                <label class="layui-form-label required">网站名称</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="sitename" lay-verify="required" lay-reqtext="网站域名不能为空" placeholder="请输入网站名称"  value="{$sitename}" class="layui-input">
+                </div>
+            </div>
+			<div class="layui-form-item">
+                     <label class="layui-form-label">数据加密</label>
+                     <div class="layui-input-inline">
+                     <select name="Encryption">
+                             <option value="0">DES</option>
+                             <option value="1">RSA</option>
+                     </select>
+                     </div>
+            </div>
+			<div class="layui-form-item">
+                <label class="layui-form-label">赠送时长/分</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="give" lay-verify="required|number" lay-reqtext=""  value="{$give}" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">注册码上限</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="card_count" lay-verify="required|number" lay-reqtext=""  value="{$card_count}" class="layui-input">
+                </div>
+            </div>
+			<div class="layui-form-item">
+                <label class="layui-form-label">应用上限</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="soft_count" lay-verify="required|number" lay-reqtext=""  value="{$soft_count}" class="layui-input">
+                </div>
+            </div>
+			<div class="layui-form-item">
+                <label class="layui-form-label">管理员邮箱</label>
+                <div class="layui-input-block">
+                    <input type="text" name="email" lay-verify="required|email" lay-reqtext=""  value="{$email}" class="layui-input">
+                </div>
+            </div>
+			<div class="layui-form-item">
+                <label class="layui-form-label">邮箱授权码</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="email_key" lay-verify="required" lay-reqtext=""  value="{$email_key}" class="layui-input">
+                </div>
+            </div>
+			<div class="layui-form-item">
+                <label class="layui-form-label">管理员QQ</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="qq" lay-verify="required|number" lay-reqtext=""  value="{$qq}" class="layui-input">
+                </div>
+            </div>
+			<div class="layui-form-item">
+                <label class="layui-form-label">发卡网</label>
+                <div class="layui-input-block">
+                    <input type="text" name="fkw" lay-verify="required|url" lay-reqtext=""  value="{$fkw}" class="layui-input">
+                </div>
+            </div>
+			<div class="layui-form-item">
+                <label class="layui-form-label">QQ群</label>
+                <div class="layui-input-block">
+                    <input type="text" name="group" lay-verify="required|number" lay-reqtext=""  value="{$group}" class="layui-input">
+                </div>
+            </div>
+			<div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">免责声明</label>
+                <div class="layui-input-block">
+                    <textarea name="disclaimer" class="layui-textarea">{$disclaimer}</textarea>
+                </div>
+            </div>
+			<div class="layui-form-item">
+                <label class="layui-form-label">启动图地址</label>
+                <div class="layui-input-block">
+                    <input type="text" name="start_url" lay-verify="required|url" lay-reqtext=""  value="{$start_url}" class="layui-input">
+                </div>
+            </div>
+			<div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">分享内容</label>
+                <div class="layui-input-block">
+                    <textarea name="share_msg" class="layui-textarea">{$share_msg}</textarea>
+                </div>
+            </div>
+			<div class="layui-form-item">
+                <label class="layui-form-label">更多资源</label>
+                <div class="layui-input-block">
+                    <input type="text" name="more" lay-verify="required|url" lay-reqtext=""  value="{$more}" class="layui-input">
+                </div>
+            </div>
+			<div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">盗版校验信息</label>
+                <div class="layui-input-block">
+                    <textarea name="anti_msg" class="layui-textarea">{$anti_msg}</textarea>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                 <button class="layui-btn" lay-submit lay-filter="setting">确认保存</button>
+            </div>
+		</form>
+        </div>
+    </div>
+</div>
+<script>
+    layui.use(['form'], function () {
+	    var $ = layui.jquery;
+        var form = layui.form
+            , layer = layui.layer;
+        form.render();
+		form.val('SettingInfo', {
+		                        "Encryption": {$Encryption}
+								});
+        form.on('submit(setting)', function (data) {
+		    var loading = layer.load(0, {
+                        shade: false
+                    });
+			$.ajax({
+                      url:"./Home/Setting/SaveSysConfig",
+                      method:'post',
+                      data:data.field,
+				      xhrFields: {
+                      withCredentials: true
+                      },
+                      crossDomain: true,
+                      dataType:'JSON',
+                      success:function(res){
+				        var result = JSON.parse(res);
+                        if(result.status==0){
+                           layer.msg(result.msg);
+                          }
+                        else
+                          layer.msg(result.msg);
+						layer.close(loading);
+                    },
+                    error:function (e) {
+                       layer.msg("提交错误");
+					   layer.close(loading);
+                    }
+                  })
+            return false;
+        });
+    });
+</script>

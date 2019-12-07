@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:gravity="center_vertical"
+    android:background="@android:color/transparent"
+    android:layout_height="wrap_content">
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        app:srcCompat="@drawable/ic_volume_down_black_24dp"
+        android:layout_height="wrap_content"
+        tools:ignore="VectorDrawableCompat" />
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/notice"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginLeft="5dp"
+        android:text="@string/register"
+        android:layout_height="wrap_content" />
+</LinearLayout>

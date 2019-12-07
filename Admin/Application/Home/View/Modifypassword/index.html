@@ -1,0 +1,81 @@
+<style>
+    .layui-form-item .layui-input-company {width: auto;padding-right: 10px;line-height: 38px;}
+</style>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+
+        <div class="layui-form layuimini-form">
+            <div class="layui-form-item">
+                <label class="layui-form-label required">旧的密码</label>
+                <div class="layui-input-block">
+                    <input type="password" name="old_password" lay-verify="required" lay-reqtext="旧的密码不能为空" placeholder="请输入旧的密码"  value="" class="layui-input">
+                    <tip>填写自己账号的旧的密码。</tip>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label required">新的密码</label>
+                <div class="layui-input-block">
+                    <input type="password" name="new_password" lay-verify="required" lay-reqtext="新的密码不能为空" placeholder="请输入新的密码"  value="" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="saveBtn">确认保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    layui.use(['form'], function () {
+	    var $ = layui.jquery;
+        var form = layui.form
+            , layer = layui.layer;
+
+        //监听提交
+        form.on('submit(saveBtn)', function (data) {
+		    var loading = layer.load(0, {
+                    shade: false
+                });
+			$.ajax({
+                url:"./Home/Modifypassword/Change",
+                method:'post',
+                data:data.field,
+				xhrFields: {
+                  withCredentials: true
+                },
+                crossDomain: true,
+                dataType:'JSON',
+                success:function(res){
+				    var result = JSON.parse(res);
+                    if(result.status==0){
+					    layer.open({
+                          type: 1
+                          , offset: 'auto'
+                          , id: 'layer'
+                          , content: '<div style="padding: 20px 100px;">' + result.msg + '</div>'
+                          , btn: '确定'
+                          , btnAlign: 'c' 
+                          , shade: 0 
+                          , yes: function () {
+							   window.location = 'Home/?a=logout';
+                          }
+                       });
+                    }
+                    else
+                        layer.msg(result.msg);
+						
+				    layer.close(loading);
+                },
+                error:function (e) {
+                    layer.msg("提交错误");
+					layer.close(loading);
+                }
+            })
+            return false;
+        });
+
+    });
+</script>

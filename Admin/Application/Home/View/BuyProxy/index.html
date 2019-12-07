@@ -1,0 +1,229 @@
+<div class="layuimini-container">
+    <div class="layuimini-main">
+	<fieldset class="layui-elem-field layuimini-search">
+            <legend>检索信息</legend>
+            <div style="margin: 10px 10px 10px 10px">
+                <form class="layui-form layui-form-pane" action="">
+				    <div class="layui-form-item">
+			            <div class="layui-inline">
+                        <label class="layui-form-label">代理选择</label>
+                        <div class="layui-input-inline">
+                            <select lay-verify="required" lay-filter="proxy"  lay-reqtext="软件都不选择，你看谁的码？">
+						            <option value="">请选择代理</option>
+						            <volist name="proxylist" id="vo">
+						            <option value="{$vo.id}">{$vo.username}</option>
+                                    </volist>
+                            </select>
+                        </div>
+                        </div>
+			        </div>
+                </form>
+            </div>
+        </fieldset>
+		<table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+        <script type="text/html" id="currentTableBar">
+            <a class="layui-btn layui-btn-xs data-count-edit" lay-event="edit">查看</a>
+            <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
+        </script>
+    </div>
+</div>
+<script class="ProxyInfo" type="text/html">
+          <form class="layui-form layui-form-pane" action="" lay-filter="ProxyInfo">
+		                 <div class="layui-form-item">
+                              <label class="layui-form-label">开卡账号</label>
+                              <div class="layui-input-inline">
+                                   <input type="text" lay-verify="required" name="username" autocomplete="off"  class="layui-input">
+                              </div>
+                         </div> 
+						 <div class="layui-form-item">
+                              <label class="layui-form-label">开卡类型</label>
+                              <div class="layui-input-inline">
+                                   <input type="text" lay-verify="required" name="price_type" autocomplete="off"  class="layui-input">
+                              </div>
+                         </div>
+						 <div class="layui-form-item">
+                              <label class="layui-form-label">代理余额</label>
+                              <div class="layui-input-inline">
+                                   <input type="text" lay-verify="required|number" name="proxy_money" autocomplete="off"  class="layui-input">
+                              </div>
+                         </div>
+						 <div class="layui-form-item">
+                              <label class="layui-form-label">开卡费用</label>
+                              <div class="layui-input-inline">
+                                   <input type="text" lay-verify="required|number" name="money" autocomplete="off"  class="layui-input">
+                              </div>
+                         </div>
+						 <div class="layui-form-item">
+                              <label class="layui-form-label">开卡张数</label>
+                              <div class="layui-input-inline">
+                                   <input type="text" lay-verify="required|number" name="count" autocomplete="off"  class="layui-input">
+                              </div>
+                         </div>
+						 <div class="layui-form-item">
+                              <label class="layui-form-label">开卡应用</label>
+                              <div class="layui-input-inline">
+                                   <input type="text" lay-verify="required|number" name="software_name" autocomplete="off"  class="layui-input">
+                              </div>
+                         </div>
+						 <div class="layui-form-item">
+                              <button class="layui-hide"  lay-submit="" lay-filter="add_proxy"></button>
+                         </div>
+				   </form>
+</script>
+
+<script>
+    layui.config({
+        base: '../Public/js/'
+    }).extend({
+        formSelects: 'formSelects-v4'
+    });
+    layui.use(['form', 'table', 'formSelects'], function () {
+	    var formSelects = layui.formSelects;
+        var $ = layui.jquery,
+            form = layui.form,
+            table = layui.table;
+		
+		form.render();
+        table.render({
+            elem: '#currentTableId',
+            url: './Home/BuyProxy/BuyProxyList',
+			height: 500,
+			loading: true,
+			method: 'post',
+			limits: [10],
+            limit: 10,
+			cellMinWidth: 80,
+            page: true,
+            cols: [[
+                {field: 'id',width: 60, title: 'ID', sort: true},
+                {field: 'username', title: '开卡代理'},
+				{field: 'price_type', title: '开卡类型',templet:function(rec){
+							switch(rec.price_type)
+							{
+							  case "1":
+							  return "小时卡";
+							  break;
+							  case "2":
+							  return "天卡";
+							  break;
+							  case "3":
+							  return "月卡";
+							  break;
+							  case "4":
+							  return "季卡";
+							  break;
+							  case "5":
+							  return "年卡";
+							  break;
+							}
+        		}},
+				{field: 'proxy_money', title: '代理余额'},
+				{field: 'money', title: '开卡费用'},
+				{field: 'count', title: '开卡张数'},
+				{field: 'software_name', title: '开卡应用'},
+                {title: '操作', minWidth: 120, templet: '#currentTableBar', fixed: "right", align: "center"}
+            ]]
+        });
+		form.on('select(proxy)', function(data){
+		              var ins1 = table.render({
+                      elem: '#currentTableId',
+                      url: './Home/BuyProxy/BuyProxyList',
+			          height: 500,
+					  loading: true,
+			          method: 'post',
+			          limits: [10],
+                      limit: 10,
+		              where: {proxy_id: data.value},
+						page: true,
+						cellMinWidth: 80,
+						cols: [[
+						{field: 'id',width: 60, title: 'ID', sort: true},
+                {field: 'username', title: '开卡代理'},
+				{field: 'price_type', title: '开卡类型',templet:function(rec){
+							switch(rec.price_type)
+							{
+							  case "1":
+							  return "小时卡";
+							  break;
+							  case "2":
+							  return "天卡";
+							  break;
+							  case "3":
+							  return "月卡";
+							  break;
+							  case "4":
+							  return "季卡";
+							  break;
+							  case "5":
+							  return "年卡";
+							  break;
+							}
+        		}},
+				{field: 'proxy_money', title: '代理余额'},
+				{field: 'money', title: '开卡费用'},
+				{field: 'count', title: '开卡张数'},
+				{field: 'software_name', title: '开卡应用'},
+						{title: '操作', minWidth: 120,  templet: '#currentTableBar', fixed: "right", align: "center"}
+						]],
+						done: function (res, curr, count) {
+                              exportData=res.data;
+                        }
+              });
+	    });
+        table.on('tool(currentTableFilter)', function (obj) {
+            var data = obj.data;
+            if (obj.event === 'edit') {
+				layer.open({
+                     content: $('.ProxyInfo').html()
+					 ,title: '编辑 '+data.username
+                     ,btn: ['取消']
+					 ,success: function(layero, index){
+					           form.render();
+							   form.val('ProxyInfo', {
+                                        "id": data.id,
+										"username": data.username,
+										"price_type": data.price_type,
+										"proxy_money": data.proxy_money,
+										"money": data.money,
+										"count": data.count,
+										"software_name": data.software_name
+                                        										
+                               });
+                     }
+               });
+            } else if (obj.event === 'delete') {
+                layer.confirm('是否删除 '+data.username, function (index) {
+                    obj.del();
+                    layer.close(index);
+					var loading = layer.load(0, {
+                        shade: false
+                    });
+					$.ajax({
+                      url:"./Home/BuyProxy/Del",
+                      method:'post',
+                      data:data,
+				      xhrFields: {
+                      withCredentials: true
+                      },
+                      crossDomain: true,
+                      dataType:'JSON',
+                      success:function(res){
+				        var result = JSON.parse(res);
+                        if(result.status==0){
+                           layer.msg(result.msg);
+                          }
+                        else
+                          layer.msg(result.msg);
+						layer.close(loading);
+                    },
+                    error:function (e) {
+                       layer.msg("提交错误");
+					   layer.close(loading);
+                    }
+                  })
+                });
+            }
+        });
+
+    });
+</script>

@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">麦芽糖Inject</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">登录 / 注册</string>
+
+
+
+    <string name="menu_sign">APK签名</string>
+    <string name="menu_pay">用户充值</string>
+    <string name="menu_group">加入QQ群</string>
+    <string name="menu_link">后台管理</string>
+
+
+    <string name="login">LOGIN</string>
+    <string name="Username">用户名</string>
+    <string name="Password">密码</string>
+    <string name="forgot_your_password">忘记密码?</string>
+    <string name="go">登录</string>
+    <string name="repeat_password">重复密码</string>
+    <string name="next">注册</string>
+    <string name="register">REGISTER</string>
+</resources>

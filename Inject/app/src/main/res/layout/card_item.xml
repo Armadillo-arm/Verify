@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/model_height"
+    android:layout_centerInParent="true"
+    android:layout_margin="15dp"
+    app:cardCornerRadius="6dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/model_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/model_view"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/model_msg"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="网络验证模式现在才注册即可\nz作者线程"
+            android:textColor="@color/colorAccent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/model_title"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/model_msg"
+            android:layout_alignParentBottom="true"
+            android:background="@color/model_background"
+            android:gravity="center"
+            android:text="测试"
+            android:textColor="@color/colorAccent" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

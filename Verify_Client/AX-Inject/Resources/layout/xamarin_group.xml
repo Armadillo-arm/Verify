@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="欢迎使用"
+        android:tag="Title"
+        android:gravity="center|center_vertical|center_horizontal"
+        android:textSize="20sp"
+        android:background="#FF237686"
+        android:textColor="#FFFFFFFF"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center|center_vertical|center_horizontal">
+
+        <AX_Inject.AuthDialog.view.RoundImageView
+            android:tag="img"
+            android:scaleType="centerCrop"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginBottom="30dp"/>
+
+        <AX_Inject.AuthDialog.view.GradientShaderTextView
+            android:tag="Tips"
+            android:textStyle="bold|italic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="加入Q群获取更多软件"
+            android:gravity="center|center_vertical|center_horizontal"
+            android:layout_marginTop="30dp"
+            android:textSize="18sp"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:tag="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp">
+
+            <LinearLayout
+                android:gravity="center"
+                android:tag="GroupView"
+                android:orientation="horizontal"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0">
+
+                <TextView
+                    android:tag="Group"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="加入QQ群"
+                    android:textColor="#FFFFFFFF"
+                    android:gravity="center"
+                    android:textStyle="bold|italic"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="0dp"
+                android:tag="QQView"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0">
+
+                <TextView
+                    android:tag="QQ"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="加我QQ"
+                    android:textColor="#FFFFFFFF"
+                    android:gravity="center"
+                    android:textStyle="bold|italic"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="0dp"
+                android:tag="MoreView"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0">
+
+                <TextView
+                    android:tag="More"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="更多资源"
+                    android:textColor="#FFFFFFFF"
+                    android:gravity="center"
+                    android:textStyle="bold|italic"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <AX_Inject.AuthDialog.view.GradientShaderTextView
+            android:tag="Count"
+            android:textStyle="bold|italic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="你已分享 0 / 5 次"
+            android:gravity="center|center_vertical|center_horizontal"
+            android:layout_marginTop="30dp"
+            android:textSize="18sp"/>
+
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="100dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="30dp"
+            android:tag="Start1">
+
+            <TextView
+                android:tag="Start"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="进入软件"
+                android:textColor="#FFFFFFFF"
+                android:gravity="center"
+                android:textStyle="bold|italic"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

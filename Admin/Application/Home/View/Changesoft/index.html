@@ -1,0 +1,262 @@
+<div class="layuimini-container">
+    <div class="layuimini-main">
+	<div class="layui-tab layui-tab-card">
+         <ul class="layui-tab-title">
+             <li class="layui-this">云网络验证</li>
+             <li>引流加群</li>
+         </ul>
+         <div class="layui-tab-content">
+		      <!--网络验证-->
+              <div class="layui-tab-item layui-show">
+			       <form class="layui-form layui-form-pane" action="">
+				         <input type="text" lay-verify="required|number" name="authmode" autocomplete="off" class="layui-hide" value="0">
+				         <div class="layui-form-item">
+                              <label class="layui-form-label">软件名</label>
+                              <div class="layui-input-inline">
+                                   <input type="text" name="name" lay-verify="required" lay-reqtext="软件名是必填项，岂能为空？" autocomplete="off" placeholder="请输入软件名" class="layui-input">
+                              </div>
+                         </div>
+						 <div class="layui-form-item">
+                              <label class="layui-form-label">试用分钟</label>
+                              <div class="layui-input-inline">
+                                   <input type="text" lay-verify="required|number" name="try_minutes" autocomplete="off" placeholder="填0代表不可试用" class="layui-input">
+                              </div>
+                         </div>
+						 <div class="layui-form-item">
+                              <label class="layui-form-label">试用次数</label>
+                              <div class="layui-input-inline">
+                                   <input type="text" lay-verify="required|number" name="try_count" autocomplete="off" placeholder="填0代表不可试用" class="layui-input">
+                              </div>
+                         </div>
+						 <div class="layui-form-item">
+                              <label class="layui-form-label">绑机模式</label>
+							  <div class="layui-input-inline">
+                              <select name="bindmode">
+                                      <option value="0">绑机单开</option>
+                                      <option value="1">绑机多开</option>
+									  <option value="2">不绑机多开</option>
+                              </select>
+                              </div>
+                         </div>
+						 <div class="layui-form-item">
+                              <label class="layui-form-label">弹窗标题</label>
+                              <div class="layui-input-inline">
+                                   <input type="text" lay-verify="required" lay-reqtext="标题是必填项，岂能为空？" name="title" autocomplete="off" class="layui-input">
+                              </div>
+                         </div>
+						 <div class="layui-form-item layui-form-text">
+                              <label class="layui-form-label">公告</label>
+                              <div class="layui-input-block">
+                                   <textarea lay-verify="required" placeholder="请输入内容" class="layui-textarea" name="notice"></textarea>
+                              </div>
+                         </div>
+						 <div class="layui-form-item">
+                              <label class="layui-form-label">发卡网地址</label>
+                              <div class="layui-input-inline">
+                                   <input type="text" name="weburl" autocomplete="off" placeholder="不填代表关闭发卡网" class="layui-input">
+                              </div>
+                         </div>
+						 <div class="layui-form-item">
+                              <label class="layui-form-label">软件版本</label>
+                              <div class="layui-input-inline">
+                                   <input type="text" lay-verify="required|number" name="version" autocomplete="off" class="layui-input" placeholder="请输入非负整数" value="1">
+                              </div>
+                         </div>
+						 <div class="layui-form-item">
+                              <label class="layui-form-label">更新地址</label>
+                              <div class="layui-input-inline">
+                                   <input type="text" name="update_url" autocomplete="off" class="layui-input">
+                              </div>
+                         </div>
+						 <div class="layui-form-item layui-form-text">
+                              <label class="layui-form-label">更新内容</label>
+                              <div class="layui-input-block">
+                                   <textarea placeholder="请输入内容" class="layui-textarea" name="update_msg"></textarea>
+                              </div>
+                         </div>
+						 <div class="layui-form-item">
+                              <label class="layui-form-label">界面模板</label>
+                              <div class="layui-input-inline">
+                              <select name="dialog_style">
+                                      <option value="0" selected="">原生亮</option>
+                                      <option value="1">原生暗</option>
+									  <option value="2">水波纹带头像</option>
+									  <option value="3">IOS风格</option>
+                              </select>
+                              </div>
+                         </div>
+						 <div class="layui-form-item">
+                              <label class="layui-form-label">更新模式</label>
+							  <div class="layui-input-inline">
+                              <select name="updatemode">
+                                      <option value="0">强制</option>
+                                      <option value="1">可选</option>
+                              </select>
+                              </div>
+                         </div>
+						 <div class="layui-form-item">
+                              <label class="layui-form-label">数据加密</label>
+                              <div class="layui-input-inline">
+                              <select name="encryption">
+                                      <option value="0">DES</option>
+                                      <option value="1">RSA</option>
+                              </select>
+                              </div>
+                         </div>
+						 <div class="layui-form-item">
+                              <label class="layui-form-label">运营状态</label>
+							  <div class="layui-input-inline">
+                              <select name="frozen">
+                                      <option value="0">运营</option>
+                                      <option value="1">停用</option>
+                              </select>
+                              </div>
+                         </div>
+						 <div class="layui-form-item">
+                              <button class="layui-btn" lay-submit="" lay-filter="create">创建应用</button>
+                              <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                         </div>
+				   </form>
+			  </div>
+			  <!--引流加群-->
+              <div class="layui-tab-item">
+			       <form class="layui-form layui-form-pane" action="">
+				         <input type="text" lay-verify="required|number" name="authmode" autocomplete="off" class="layui-hide" value="1">
+						 <div class="layui-form-item">
+                              <label class="layui-form-label">软件名</label>
+                              <div class="layui-input-inline">
+                                   <input type="text" name="name" lay-verify="required" lay-reqtext="软件名是必填项，岂能为空？" autocomplete="off" placeholder="请输入软件名" class="layui-input">
+                              </div>
+                         </div>
+						 <div class="layui-form-item">
+                              <label class="layui-form-label">弹窗标题</label>
+                              <div class="layui-input-inline">
+                                   <input type="text" lay-verify="required" lay-reqtext="标题是必填项，岂能为空？" name="title" autocomplete="off" class="layui-input">
+                              </div>
+                         </div>
+						 <div class="layui-form-item layui-form-text">
+                              <label class="layui-form-label">提示信息</label>
+                              <div class="layui-input-block">
+                                   <textarea lay-verify="required" placeholder="请输入内容" class="layui-textarea" name="notice"></textarea>
+                              </div>
+                         </div>
+						 <div class="layui-form-item">
+                              <label class="layui-form-label">分享次数</label>
+                              <div class="layui-input-inline">
+                                   <input type="text" lay-verify="required|number" name="share_count" autocomplete="off" class="layui-input">
+                              </div>
+                         </div>
+						 <div class="layui-form-item layui-form-text">
+                              <label class="layui-form-label">分享内容</label>
+                              <div class="layui-input-block">
+                                   <textarea lay-verify="required" placeholder="请输入内容" class="layui-textarea" name="share_msg"></textarea>
+                              </div>
+                         </div>
+						 <div class="layui-form-item">
+                              <label class="layui-form-label">多久显示</label>
+                              <div class="layui-input-inline">
+                                   <input type="text" lay-verify="required|number" name="delay_time" autocomplete="off" placeholder="单位/秒 填0代表立即显示" class="layui-input">
+                              </div>
+                         </div>
+						 <div class="layui-form-item">
+                              <label class="layui-form-label">显示次数</label>
+                              <div class="layui-input-inline">
+                                   <input type="text" lay-verify="required|number" name="show_count" autocomplete="off" placeholder="填0代表不显示" class="layui-input">
+                              </div>
+                         </div>
+						 <div class="layui-form-item">
+                              <label class="layui-form-label">更多资源</label>
+                              <div class="layui-input-inline">
+                                   <input type="text" lay-verify="required|url" name="more_url" autocomplete="off" class="layui-input">
+                              </div>
+                         </div>
+						 <div class="layui-form-item">
+                              <label class="layui-form-label">客服QQ</label>
+                              <div class="layui-input-inline">
+                                   <input type="text" lay-verify="required|number" name="qq_key" autocomplete="off"class="layui-input">
+                              </div>
+                         </div>
+						 <div class="layui-form-item">
+                              <label class="layui-form-label">群号</label>
+                              <div class="layui-input-inline">
+                                   <input type="text" lay-verify="required|number" name="group_key" autocomplete="off" class="layui-input">
+                              </div>
+                         </div>
+						 <div class="layui-form-item">
+                              <label class="layui-form-label">界面模板</label>
+                              <div class="layui-input-inline">
+                              <select name="group_style">
+                                      <option value="0" selected="">原生亮</option>
+                                      <option value="1">原生暗</option>
+									  <option value="2">透明背景带头像</option>
+                              </select>
+                              </div>
+                         </div>
+						 <div class="layui-form-item">
+                              <label class="layui-form-label">数据加密</label>
+                              <div class="layui-input-inline">
+                              <select name="encryption">
+                                      <option value="0">DES</option>
+                                      <option value="1">RSA</option>
+                              </select>
+                              </div>
+                         </div>
+						 <div class="layui-form-item">
+                              <label class="layui-form-label">运营状态</label>
+							  <div class="layui-input-inline">
+                              <select name="frozen">
+                                      <option value="0">运营</option>
+                                      <option value="1">停用</option>
+                              </select>
+                              </div>
+                         </div>
+						 <div class="layui-form-item">
+                              <button class="layui-btn" lay-submit="" lay-filter="create">创建应用</button>
+                              <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                         </div>
+				   </form>
+			  </div>
+         </div>
+    </div>
+    </div>
+</div>
+<script>
+    layui.use(['form', 'layedit', 'laydate'], function () {
+	    var $ = layui.jquery;
+        var form = layui.form
+            , layer = layui.layer
+            , layedit = layui.layedit
+            , laydate = layui.laydate;
+		form.render();
+        form.on('submit(create)', function (data) {
+		    var loading = layer.load(0, {
+                    shade: false
+                });
+			$.ajax({
+                      url:"./Home/Changesoft/CreateSoft",
+                      method:'post',
+                      data:data.field,
+				      xhrFields: {
+                      withCredentials: true
+                      },
+                      crossDomain: true,
+                      dataType:'JSON',
+                      success:function(res){
+				        var result = JSON.parse(res);
+                        if(result.status==0){
+                           layer.msg(result.msg);
+                          }
+                        else
+                          layer.msg(result.msg);
+						
+						layer.close(loading);
+                    },
+                    error:function (e) {
+                       layer.msg("提交错误");
+					   layer.close(loading);
+                    }
+                  })
+            return false;
+        });
+    });
+</script>

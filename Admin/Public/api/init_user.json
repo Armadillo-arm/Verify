@@ -1,0 +1,105 @@
+{
+	"clearInfo": {
+		"clearUrl": "api/clear.json"
+	},
+	"homeInfo": {
+		"title": "首页",
+		"icon": "fa fa-home",
+		"href": "Home/Welcome"
+	},
+	"logoInfo": {
+		"title": "穿山甲云科技",
+		"image": "Public/image/logo.png",
+		"href": ""
+	},
+	"clearInfo": {
+    "clearUrl": "Public/api/clear.json"
+    },
+	"menuInfo": {
+		"currency": {
+			"title": "云网络科技",
+			"icon": "fa fa-paper-plane",
+			"child": [{
+					"title": "商户信息",
+					"href": "Home/Welcome",
+					"icon": "fa fa-tachometer",
+					"target": "_self"
+				},
+				{
+					"title": "应用管理",
+					"href": "",
+					"icon": "fa fa-window-maximize",
+					"target": "_self",
+					"child": [{
+							"title": "新建软件",
+							"href": "Home/Changesoft",
+							"icon": "fa fa-cloud",
+							"target": "_self"
+						},
+						{
+							"title": "软件管理",
+							"href": "Home/Managesoft",
+							"icon": "fa fa-cubes",
+							"target": "_self"
+						},
+						{
+							"title": "生成注册码",
+							"href": "Home/createcode",
+							"icon": "fa fa-list-alt",
+							"target": "_self"
+						},
+						{
+							"title": "注册码管理",
+							"href": "Home/Managecode",
+							"icon": "fa fa-navicon",
+							"target": "_self"
+						}
+					]
+				},
+				{
+					"title": "代理系统",
+					"href": "",
+					"icon": "fa fa-paper-plane",
+					"target": "_self",
+					"child": [{
+							"title": "代理列表",
+							"href": "Home/Proxy",
+							"icon": "fa fa-group",
+							"target": "_self"
+						},
+						{
+							"title": "价格管理",
+							"href": "Home/Price",
+							"icon": "fa fa-forumbee",
+							"target": "_self"
+						},
+						{
+							"title": "购卡记录",
+							"href": "Home/BuyProxy",
+							"icon": "fa fa-credit-card",
+							"target": "_self"
+						}
+					]
+				},
+				{
+					"title": "高防DDOS服务",
+					"href": "Home/Advanced",
+					"icon": "fa fa-apple",
+					"target": "_self"
+				},
+				{
+					"title": "意见反馈",
+					"href": "",
+					"icon": "fa fa-flag-o",
+					"target": "_self",
+					"child": [{
+						"title": "联系我们",
+						"href": "Home/Contact",
+						"icon": "fa fa-comments",
+						"target": "_self"
+					}]
+				}
+			]
+		}
+	}
+}
